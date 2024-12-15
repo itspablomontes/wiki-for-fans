@@ -1,8 +1,14 @@
+import { title } from "motion/react-client";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./pages/**/*.{html,js}", "./components/**/*.{html,js}"],
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
