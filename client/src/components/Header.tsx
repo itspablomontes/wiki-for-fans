@@ -102,7 +102,7 @@ const Header = () => {
         </motion.li>
       </motion.div>
       <motion.form
-        className={`absolute xl:hidden top-24 left-0 flex justify-center ${
+        className={`absolute xl:hidden top-24 left-0 flex justify-center w-full ${
           isSearchOpen ? "opacity-1" : "opacity-0"
         }`}
         initial={{ opacity: 0 }}
