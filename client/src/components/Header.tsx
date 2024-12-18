@@ -5,6 +5,16 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const menuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setIsSearchOpen(false);
+  };
+
+  const searchToggle = () => {
+    setIsSearchOpen(!isSearchOpen);
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-black drop-shadow-md">
       <motion.a
@@ -72,7 +82,7 @@ const Header = () => {
           animate={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => {
-            setIsSearchOpen(!isSearchOpen);
+            searchToggle();
           }}
         ></motion.i>
         <motion.i
@@ -80,7 +90,7 @@ const Header = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => menuToggle()}
         />
       </motion.div>
       <motion.div
