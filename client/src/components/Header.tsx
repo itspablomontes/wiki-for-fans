@@ -75,6 +75,9 @@ const Header = () => {
         className={`absolute xl:hidden top-24 left-0 w-full  bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
           isMenuOpen ? "opacity-100" : "opacity-0"
         }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isMenuOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <motion.li className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer">
           Home
