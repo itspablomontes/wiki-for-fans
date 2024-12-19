@@ -1,5 +1,11 @@
+import HomeCards from "../components/HomeCards";
+
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <HomeCards />
+    </>
+  );
 };
 
 export default Home;
