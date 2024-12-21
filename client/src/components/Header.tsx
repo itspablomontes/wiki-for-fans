@@ -96,8 +96,8 @@ const Header = () => {
         </motion.div>
       </header>
       <motion.div
-        className={`absolute xl:hidden top-24 left-0 w-full  bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
-          isMenuOpen ? "opacity-100" : "opacity-0"
+        className={`absolute xl:hidden top-24 left-0 w-full bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
+          isMenuOpen ? "opacity-100" : "hidden"
         }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: isMenuOpen ? 1 : 0 }}
@@ -113,9 +113,10 @@ const Header = () => {
           Houses
         </motion.li>
       </motion.div>
+
       <motion.form
         className={`absolute xl:hidden top-24 left-0 flex justify-center w-full ${
-          isSearchOpen ? "opacity-1" : "opacity-0"
+          isSearchOpen ? "opacity-100" : "hidden"
         }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: isSearchOpen ? 1 : 0 }}

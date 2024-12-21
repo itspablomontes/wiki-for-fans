@@ -4,7 +4,7 @@ import "./assets/fonts.css";
 
 function App() {
   return (
-    <div className="w-full h-full absolute bg-zinc-900 text-white">
+    <div className="w-full bg-zinc-900 text-white">
       <Header />
       <Outlet />
     </div>
