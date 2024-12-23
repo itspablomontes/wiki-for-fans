@@ -3,7 +3,8 @@ import { motion } from "motion/react";
 const HomeCards = () => {
   return (
     <div className="flex px-8 py-12 justify-center flex-col items-center gap-9 flex-wrap md:flex-row">
-      <motion.div
+      <motion.a
+        href=""
         className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -17,8 +18,9 @@ const HomeCards = () => {
           className=" rounded-md  bg-center bg-cover"
           src="src/assets/Jon_Snow.webp"
         />
-      </motion.div>
-      <motion.div
+      </motion.a>
+      <motion.a
+        href=""
         className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -30,7 +32,7 @@ const HomeCards = () => {
           className=" rounded-md  bg-center bg-cover"
           src="src/assets/lannister.webp"
         />
-      </motion.div>
+      </motion.a>
     </div>
   );
 };
