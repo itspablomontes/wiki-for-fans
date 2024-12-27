@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 const HeroSection = () => {
   return (
-    <div className=" px-8 w-auto py-96 flex flex-col gap-5 justify-center bg-hero-background bg-center font-bold text-center bg-cover md:bg-[center_top]">
+    <div className=" px-8 w-auto py-96 md:py-[25rem] flex flex-col gap-5 justify-center bg-hero-background bg-center font-bold text-center bg-cover md:bg-[center_top]">
       <motion.div
         className="md:text-4xl font-custom text-xl"
         initial={{ scale: 0 }}
