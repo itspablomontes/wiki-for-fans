@@ -2,7 +2,10 @@ import { motion } from "motion/react";
 
 const HomeCards = () => {
   return (
-    <div className="flex px-8 py-12 my-24 justify-center flex-col items-center gap-9 flex-wrap md:flex-row">
+    <div
+      className="flex px-8 py-12 mt-24 justify-center flex-col items-center gap-9 flex-wrap md:flex-row"
+      id="cards"
+    >
       <motion.a
         href=""
         className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
