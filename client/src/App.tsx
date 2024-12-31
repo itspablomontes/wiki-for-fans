@@ -1,13 +1,14 @@
-import Header from "./components/Header";
-import { Outlet } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./assets/fonts.css";
+import { Router } from "./Router";
 
 function App() {
   return (
-    <div className=" bg-zinc-900 min-h-screen">
-      <Header />
-      <Outlet />
-    </div>
+    <BrowserRouter>
+      <div className=" bg-zinc-900 min-h-screen">
+        <Router />
+      </div>
+    </BrowserRouter>
   );
 }
 
