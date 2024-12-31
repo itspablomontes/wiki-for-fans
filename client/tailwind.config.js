@@ -5,6 +5,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
+        custom: ["GameOfThrones", "serif"],
+      },
+      backgroundImage: {
+        "hero-background": "url('src/assets/hero-bg.webp')",
       },
     },
   },

@@ -1,5 +1,13 @@
+import HomeCards from "../components/HomeCards";
+import HeroSection from "../components/HeroSection";
+
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <HeroSection />
+      <HomeCards />
+    </>
+  );
 };
 
 export default Home;
