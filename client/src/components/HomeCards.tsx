@@ -2,7 +2,10 @@ import { motion } from "motion/react";
 
 const HomeCards = () => {
   return (
-    <div className="flex px-8 py-12 mt-24 justify-center flex-col gap-20">
+    <div
+      className="flex px-8 py-12 mt-24 justify-center flex-col gap-20"
+      id="cards"
+    >
       <motion.div
         className="font-bold text-2xl md:text-4xl text-center"
         initial={{ scale: 0 }}
@@ -10,10 +13,7 @@ const HomeCards = () => {
       >
         Choose what you want to dive in:
       </motion.div>
-      <div
-        className="flex justify-center flex-col items-center gap-9 flex-wrap md:flex-row"
-        id="cards"
-      >
+      <div className="flex justify-center flex-col items-center gap-9 flex-wrap md:flex-row">
         <motion.a
           href=""
           className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
