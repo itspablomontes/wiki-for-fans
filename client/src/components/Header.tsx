@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-black drop-shadow-md">
+      <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-black drop-shadow-md sticky top-0 z-50">
         <motion.a
           href=""
           whileTap={{ scale: 0.9 }}
@@ -96,7 +96,7 @@ const Header = () => {
         </motion.div>
       </header>
       <motion.div
-        className={`absolute xl:hidden top-24 left-0 w-full bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
+        className={`sticky z-50 top-24 xl:hidden h-screen left-0 w-full bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
           isMenuOpen ? "opacity-100" : "hidden"
         }`}
         initial={{ opacity: 0 }}
@@ -115,7 +115,7 @@ const Header = () => {
       </motion.div>
 
       <motion.form
-        className={`absolute xl:hidden top-24 left-0 flex justify-center w-full ${
+        className={`sticky z-50 xl:hidden top-24 left-0 flex justify-center w-full ${
           isSearchOpen ? "opacity-100" : "hidden"
         }`}
         initial={{ opacity: 0 }}
