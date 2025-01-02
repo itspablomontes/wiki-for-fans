@@ -1,6 +1,12 @@
+import { motion } from "motion/react";
+
 const CharacterDescription = () => {
   return (
-    <div className="flex flex-col p-6 align-center justify-center text-start gap-6  bg-gray-950 border-2 border-gray-700 rounded-xl ">
+    <motion.div
+      className="flex flex-col p-6 align-center justify-center text-start gap-6  bg-gray-950 border-2 border-gray-700 rounded-xl "
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+    >
       <div className="font-bold text-3xl font-custom">Description</div>
       <div className="text-start flex flex-col gap-4 text-xl">
         <p>
@@ -51,7 +57,7 @@ const CharacterDescription = () => {
           life of freedom.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
