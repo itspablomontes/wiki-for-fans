@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,44 +19,52 @@ const Header = () => {
   return (
     <>
       <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-black drop-shadow-md sticky top-0 z-50">
-        <motion.a
-          href=""
+        <motion.div
           whileTap={{ scale: 0.9 }}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <img
-            src="src/assets/wikilogo.svg"
-            alt="wiki logo"
-            className="w-24 md:w-32 hover:scale-105 transition-all"
-          />
-        </motion.a>
+          <Link to={"/"}>
+            <img
+              src="src/assets/wikilogo.svg"
+              alt="wiki logo"
+              className="w-24 md:w-32 hover:scale-105 transition-all"
+            />
+          </Link>
+        </motion.div>
         <motion.ul
           className="hidden xl:flex items-center gap-12 font-semibold text-base"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <motion.li
-            className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.5 }}
-          >
-            Home
-          </motion.li>
-          <motion.li
-            className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.5 }}
-          >
-            Characters
-          </motion.li>
-          <motion.li
-            className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.5 }}
-          >
-            Houses
-          </motion.li>
+          <Link to={"/"}>
+            <motion.li
+              className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              Home
+            </motion.li>
+          </Link>
+
+          <Link to={"/characters-list"}>
+            <motion.li
+              className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              Characters
+            </motion.li>
+          </Link>
+          <Link to={"/houses-list"}>
+            <motion.li
+              className="p-3 hover:bg-gray-900 rounded-md transition-all cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              Houses
+            </motion.li>
+          </Link>
         </motion.ul>
         <motion.form
           className="hidden relative md:flex items-center justify-center gap-3 "
@@ -103,15 +112,27 @@ const Header = () => {
         animate={{ opacity: isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <motion.li className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer">
+        <Link
+          to={"/"}
+          className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer"
+          onClick={() => menuToggle()}
+        >
           Home
-        </motion.li>
-        <motion.li className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer">
+        </Link>
+        <Link
+          to={"/characters-list"}
+          className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer"
+          onClick={() => menuToggle()}
+        >
           Characters
-        </motion.li>
-        <motion.li className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer">
+        </Link>
+        <Link
+          to={"/houses-list"}
+          className="list-none w-full text-center p-4 hover:bg-gray-900 border-y-2 border-x-white cursor-pointer"
+          onClick={() => menuToggle()}
+        >
           Houses
-        </motion.li>
+        </Link>
       </motion.div>
 
       <motion.form
