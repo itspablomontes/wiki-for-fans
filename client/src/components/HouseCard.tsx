@@ -25,6 +25,9 @@ function HouseCard() {
         <b>Seat: </b> Casterly Rock - Red Keep, King's Landing (303-305 AC)
       </div>
       <div>
+        <b>Region: </b> Westernlands - Crownlands (303-305 AC)
+      </div>
+      <div>
         <b>Head: </b> Tyrion Lannister
       </div>
       <div>
