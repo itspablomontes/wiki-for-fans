@@ -3,7 +3,10 @@ import { motion } from "motion/react";
 
 const HousesListItem = () => {
   return (
-    <Link to="/" className="flex flex-col justify-center items-center gap-3 ">
+    <Link
+      to="/house"
+      className="flex flex-col justify-center items-center gap-3 "
+    >
       <motion.div
         className="p-1 hover:bg-gradient-to-r from-red-600  to-yellow-400 rounded-full"
         initial={{ scale: 0 }}
