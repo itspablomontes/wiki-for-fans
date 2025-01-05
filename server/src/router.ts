@@ -1,9 +1,7 @@
 import express from "express";
-
+import characterRoutes from "./routes/characterRoutes";
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.status(200).send("array");
-});
+router.use("/character", characterRoutes);
 
 export default router;
