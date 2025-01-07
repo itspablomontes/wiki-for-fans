@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAllCharacters } from "../models/CharactersModel";
+import { getAllCharacters } from "../models/charactersModel";
 
 const characterRoutes = Router();
 
-characterRoutes.get("/characters-list", async (req, res) => {
+characterRoutes.get("/list", async (req, res) => {
   const characters = await getAllCharacters();
   res.json(characters);
 });
