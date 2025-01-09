@@ -58,3 +58,16 @@ export const createCharacter = async (
     throw error;
   }
 };
+
+export const deleteCharacterById = async (id: number) => {
+  const query = ` DELETE FROM characters WHERE id=$1 RETURNING *;
+  `;
+  const value = id;
+  try {
+    const result = await pool.query(query, [value]);
+    return result.rows[0];
+  } catch (error) {
+    console.error("Database error:", error);
+    throw error;
+  }
+};
