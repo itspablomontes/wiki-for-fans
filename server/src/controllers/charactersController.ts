@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   getAllCharacters,
   createCharacter,
+  deleteCharacterById,
   Character,
 } from "../models/charactersModel";
 
@@ -42,6 +43,36 @@ export const addCharacter = async (
     console.log(error);
     res.status(500).json({
       message: "Error creating character",
+    });
+  }
+};
+
+export const removeCharacterById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { id } = req.body;
+
+  if (!id || isNaN(Number(id)) || Number(id) <= 0) {
+    res.status(400).json({ message: "Invalid or missing id" });
+    return;
+  }
+  try {
+    const removedCharacter = await deleteCharacterById(Number(id));
+
+    if (removedCharacter.rowCount === 0) {
+      res.status(404).json({ message: "Character Not Found" });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Character Successfully Deleted",
+      data: removedCharacter,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
     });
   }
 };
