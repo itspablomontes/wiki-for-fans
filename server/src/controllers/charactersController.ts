@@ -11,11 +11,10 @@ export const getCharacters = async (req: Request, res: Response) => {
     const characters = await getAllCharacters();
     res.status(200).json(characters);
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: "An unknown error occurred" });
-    }
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
+    });
   }
 };
 
@@ -40,9 +39,9 @@ export const addCharacter = async (
     const newCharacter = await createCharacter(characterData);
     res.status(201).json(newCharacter);
   } catch (error) {
-    console.log(error);
     res.status(500).json({
-      message: "Error creating character",
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
     });
   }
 };
