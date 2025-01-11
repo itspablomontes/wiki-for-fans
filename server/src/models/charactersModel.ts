@@ -21,6 +21,18 @@ export const getAllCharacters = async () => {
   return rows;
 };
 
+export const getCharacterById = async (id: number) => {
+  const query = `SELECT * FROM characters WHERE id=$1;`;
+  const value = id;
+  try {
+    const result = await pool.query(query, [value]);
+    return result.rows[0];
+  } catch (error) {
+    console.error("Database error:", error);
+    throw error;
+  }
+};
+
 export const createCharacter = async (
   character: Omit<Character, "id" | "created_at" | "updated_at">
 ): Promise<Character> => {
