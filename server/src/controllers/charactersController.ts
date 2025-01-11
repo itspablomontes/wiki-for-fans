@@ -4,6 +4,7 @@ import {
   createCharacter,
   deleteCharacterById,
   Character,
+  getCharacterById,
 } from "../models/charactersModel";
 
 export const getCharacters = async (req: Request, res: Response) => {
@@ -14,6 +15,34 @@ export const getCharacters = async (req: Request, res: Response) => {
     res.status(500).json({
       error:
         error instanceof Error ? error.message : "An unknown error occurred",
+    });
+  }
+};
+
+export const findCharacterById = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
+  const { id } = req.body;
+
+  if (!id || isNaN(Number(id)) || Number(id) <= 0) {
+    res.status(400).json({ message: "Invalid or missing id" });
+    return;
+  }
+
+  try {
+    const targetCharacter = await getCharacterById(Number(id));
+    if (targetCharacter.rowCount === 0) {
+      res.status(404).json({ message: "Character Not Found" });
+      return;
+    }
+    res
+      .status(200)
+      .json({ message: "Character Found!", data: targetCharacter });
+  } catch (error) {
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : "An unknown error ocurred",
     });
   }
 };
