@@ -83,3 +83,25 @@ export const deleteCharacterById = async (id: number) => {
     throw error;
   }
 };
+
+export const updateCharacter = async (
+  id: number,
+  updates: Partial<Character>
+) => {
+  const updateFields = Object.keys(updates)
+    .map((key, index) => `${key}=$${index + 1}`)
+    .join(", ");
+
+  const query = `UPDATE characters SET ${updateFields} WHERE id=$${
+    Object.keys(updates).length + 1
+  } RETURNING *`;
+  const values = [...Object.values(updates), id];
+
+  try {
+    const result = await pool.query(query, values);
+    return result.rows[0];
+  } catch (error) {
+    console.error("Database error:", error);
+    throw error;
+  }
+};
