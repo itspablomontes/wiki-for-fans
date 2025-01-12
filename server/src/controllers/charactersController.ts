@@ -19,11 +19,8 @@ export const getCharacters = async (req: Request, res: Response) => {
   }
 };
 
-export const findCharacterById = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
-  const { id } = req.body;
+export const findCharacterById = async (req: Request, res: Response) => {
+  const id = req.params.id;
 
   if (!id || isNaN(Number(id)) || Number(id) <= 0) {
     res.status(400).json({ message: "Invalid or missing id" });
@@ -75,10 +72,7 @@ export const addCharacter = async (
   }
 };
 
-export const removeCharacterById = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const removeCharacterById = async (req: Request, res: Response) => {
   const { id } = req.body;
 
   if (!id || isNaN(Number(id)) || Number(id) <= 0) {
