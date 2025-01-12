@@ -21,9 +21,9 @@ export const getCharacters = async (req: Request, res: Response) => {
 };
 
 export const findCharacterById = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const id = Number(req.params.id);
 
-  if (!id || isNaN(Number(id)) || Number(id) <= 0) {
+  if (!id || isNaN(id) || id <= 0) {
     res.status(400).json({ message: "Invalid or missing id" });
     return;
   }
@@ -45,10 +45,7 @@ export const findCharacterById = async (req: Request, res: Response) => {
   }
 };
 
-export const addCharacter = async (
-  req: Request,
-  res: Response
-): Promise<any> => {
+export const addCharacter = async (req: Request, res: Response) => {
   try {
     const characterData: Omit<Character, "id" | "created_at" | "updated_at"> =
       req.body;
@@ -58,9 +55,10 @@ export const addCharacter = async (
       !characterData.born ||
       !characterData.profile_image_url
     ) {
-      return res
+      res
         .status(400)
         .json({ message: "Name, birth and profile image url are required" });
+      return;
     }
 
     const newCharacter = await createCharacter(characterData);
@@ -74,9 +72,9 @@ export const addCharacter = async (
 };
 
 export const removeCharacterById = async (req: Request, res: Response) => {
-  const { id } = req.body;
+  const id = Number(req.params.id);
 
-  if (!id || isNaN(Number(id)) || Number(id) <= 0) {
+  if (!id || isNaN(id) || id <= 0) {
     res.status(400).json({ message: "Invalid or missing id" });
     return;
   }
