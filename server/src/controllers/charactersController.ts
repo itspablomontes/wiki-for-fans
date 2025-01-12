@@ -5,6 +5,7 @@ import {
   deleteCharacterById,
   Character,
   getCharacterById,
+  updateCharacter,
 } from "../models/charactersModel";
 
 export const getCharacters = async (req: Request, res: Response) => {
@@ -90,6 +91,36 @@ export const removeCharacterById = async (req: Request, res: Response) => {
     res.status(200).json({
       message: "Character Successfully Deleted",
       data: removedCharacter,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
+    });
+  }
+};
+
+export const updateCharacterById = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const updates = req.body;
+
+  if (!id || isNaN(id) || id <= 0) {
+    res.status(400).json({ message: "Invalid or missing id" });
+    return;
+  }
+  if (Object.keys(updates).length === 0) {
+    res.status(400).json({ message: "No updates provided" });
+    return;
+  }
+  try {
+    const updatedCharacter = await updateCharacter(id, updates);
+    if (!updatedCharacter) {
+      res.status(404).json({ message: "Character Not Found" });
+      return;
+    }
+    res.status(200).json({
+      message: "Character Updated Successfully",
+      data: updatedCharacter,
     });
   } catch (error) {
     res.status(500).json({
