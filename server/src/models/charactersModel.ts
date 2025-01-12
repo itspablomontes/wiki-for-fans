@@ -1,4 +1,3 @@
-import { error } from "console";
 import pool from "../db";
 
 export interface Character {
@@ -17,8 +16,13 @@ export interface Character {
 }
 
 export const getAllCharacters = async () => {
-  const { rows } = await pool.query("SELECT * FROM characters");
-  return rows;
+  try {
+    const { rows } = await pool.query("SELECT * FROM characters");
+    return rows;
+  } catch (error) {
+    console.error("Database error:", error);
+    throw error;
+  }
 };
 
 export const getCharacterById = async (id: number) => {
@@ -48,8 +52,7 @@ export const createCharacter = async (
       description,
       profile_image_url
       )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;
-    `;
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
 
   try {
     const values = [
