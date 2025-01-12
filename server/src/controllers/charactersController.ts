@@ -29,7 +29,7 @@ export const findCharacterById = async (req: Request, res: Response) => {
 
   try {
     const targetCharacter = await getCharacterById(Number(id));
-    if (targetCharacter.rowCount === 0) {
+    if (!targetCharacter) {
       res.status(404).json({ message: "Character Not Found" });
       return;
     }
@@ -39,7 +39,7 @@ export const findCharacterById = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       error:
-        error instanceof Error ? error.message : "An unknown error ocurred",
+        error instanceof Error ? error.message : "An unknown error occurred",
     });
   }
 };
