@@ -74,3 +74,15 @@ export const createHouse = async (
     throw error;
   }
 };
+
+export const deleteHouseById = async (id: number) => {
+  const query = `DELETE FROM houses WHERE id=$1 RETURNING *;`;
+  const value = id;
+  try {
+    const result = await pool.query(query, [value]);
+    return result.rows[0];
+  } catch (error) {
+    console.error("Database error: ", error);
+    throw error;
+  }
+};
