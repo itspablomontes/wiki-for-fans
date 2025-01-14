@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 import {
   createHouse,
+  deleteHouseById,
   getAllHouses,
   getHouseById,
   House,
@@ -63,11 +64,34 @@ export const addHouse = async (req: Request, res: Response) => {
     const newHouse = await createHouse(houseData);
     res.status(201).json(newHouse);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error:
-          error instanceof Error ? error.message : "An unknown error ocurred",
-      });
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : "An unknown error ocurred",
+    });
+  }
+};
+
+export const removeHouse = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  if (!id || isNaN(id) || id <= 0) {
+    res.status(400).json({ message: "Invalid or missing id" });
+    return;
+  }
+  try {
+    const removedHouse = await deleteHouseById(id);
+    if (removedHouse.rowCount === 0) {
+      res.status(404).json({ message: "House not found" });
+      return;
+    }
+
+    res.status(200).json({
+      message: "House successfully deleted",
+      data: removedHouse,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error ocurred",
+    });
   }
 };
