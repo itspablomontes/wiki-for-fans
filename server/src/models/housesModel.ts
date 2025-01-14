@@ -1,6 +1,6 @@
 import pool from "../db";
 
-export interface Houses {
+export interface House {
   id?: number;
   name: string;
   coat_of_arms: string;
@@ -34,6 +34,43 @@ export const getHouseById = async (id: number) => {
     return result.rows[0];
   } catch (error) {
     console.error("Database error: ", error);
+    throw error;
+  }
+};
+
+export const createHouse = async (
+  house: Omit<House, "id" | "created_at" | "updated_at">
+): Promise<House> => {
+  const query = ` 
+  INSERT INTO houses (
+  name,
+  coat_of_arms,
+  words,
+  seat,
+  region,
+  head,
+  notable_characters,
+  description,
+  house_banner_url) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
+
+  try {
+    const values = [
+      house.name,
+      house.coat_of_arms,
+      house.words,
+      house.seat,
+      house.region,
+      house.head,
+      house.notable_characters,
+      house.description,
+      house.house_banner_url,
+    ];
+
+    const result = await pool.query(query, values);
+    return result.rows[0];
+  } catch (error) {
+    console.error({ message: "Database error: ", error });
     throw error;
   }
 };
