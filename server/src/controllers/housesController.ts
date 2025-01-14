@@ -6,6 +6,7 @@ import {
   getAllHouses,
   getHouseById,
   House,
+  updateHouseById,
 } from "../models/housesModel";
 
 export const getHouses = async (req: Request, res: Response) => {
@@ -92,6 +93,34 @@ export const removeHouse = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       error: error instanceof Error ? error.message : "Unknown error ocurred",
+    });
+  }
+};
+
+export const updateHouse = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const updates = req.body;
+
+  if (!id || isNaN(id) || id <= 0) {
+    res.status(400).json({ message: "Invalid or missing id" });
+    return;
+  }
+  if (Object.keys(updates).length === 0) {
+    res.status(400).json({ message: "No updates provided" });
+    return;
+  }
+  try {
+    const updatedHouse = await updateHouseById(id, updates);
+    if (!updatedHouse) {
+      res.status(404).json({ message: "House not found" });
+      return;
+    }
+    res
+      .status(200)
+      .json({ message: "House Updated Successfully!", data: updatedHouse });
+  } catch (error) {
+    res.status(500).json({
+      error: error instanceof Error ? error.message : "Unknown error occurred",
     });
   }
 };
