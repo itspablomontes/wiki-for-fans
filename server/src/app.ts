@@ -8,6 +8,4 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-app.use("/images", express.static(path.join(__dirname, "src/images")));
-
 export default app;
