@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-const CharacterListItem = () => {
+
+interface CharacterListItemProps {
+  name: string;
+  profile_image_url: string;
+}
+
+const CharacterListItem = ({
+  name,
+  profile_image_url,
+}: CharacterListItemProps) => {
+  console.log(profile_image_url);
   return (
     <Link
       to="/character"
@@ -12,8 +22,8 @@ const CharacterListItem = () => {
         animate={{ scale: 1 }}
       >
         <img
-          src="src/assets/jon-small-icon.webp"
-          alt="jon snow"
+          src={profile_image_url}
+          alt={`${name} picture`}
           className="max-w-64 rounded-full"
         />
       </motion.div>
@@ -23,7 +33,7 @@ const CharacterListItem = () => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
       >
-        Jon Snow
+        {name}
       </motion.div>
     </Link>
   );
