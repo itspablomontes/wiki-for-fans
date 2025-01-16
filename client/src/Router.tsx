@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import { DefaultLayout } from "./layouts/DefaultLayout";
-import Character from "./routes/Character";
+import CharacterPage from "./routes/CharacterPage";
 import CharactersList from "./routes/CharactersList";
 import HousesList from "./routes/HousesList";
 import House from "./routes/House";
@@ -11,7 +11,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/character" element={<Character />} />
+        <Route path="/character/:id" element={<CharacterPage />} />
         <Route path="/characters-list" element={<CharactersList />} />
         <Route path="/house" element={<House />} />
         <Route path="/houses-list" element={<HousesList />} />
