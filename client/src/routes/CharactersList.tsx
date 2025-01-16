@@ -2,21 +2,7 @@ import CharacterListItem from "../components/CharacterListItem";
 import { motion } from "motion/react";
 import api from "../services/api";
 import { useEffect, useState } from "react";
-
-export interface Character {
-  id?: number;
-  name: string;
-  born: string;
-  died: string;
-  house: string;
-  titles: string[];
-  affiliations: string[];
-  phrase: string;
-  description: string[];
-  profile_image_url: string;
-  created_at: Date;
-  updated_at: Date;
-}
+import { Character } from "../types/CharacterType";
 
 const CharactersList = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -46,6 +32,7 @@ const CharactersList = () => {
         {characters.map((character) => (
           <CharacterListItem
             key={character.id}
+            id={character.id}
             name={character.name}
             profile_image_url={character.profile_image_url}
           />
