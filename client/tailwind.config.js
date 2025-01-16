@@ -8,7 +8,7 @@ export default {
         custom: ["GameOfThrones", "serif"],
       },
       backgroundImage: {
-        "hero-background": "url('src/assets/hero-bg.webp')",
+        "hero-background": "url('images/hero-bg.webp')",
       },
     },
   },

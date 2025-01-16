@@ -26,7 +26,7 @@ const Header = () => {
         >
           <Link to={"/"}>
             <img
-              src="src/assets/wikilogo.svg"
+              src="images/wikilogo.svg"
               alt="wiki logo"
               className="w-24 md:w-32 hover:scale-105 transition-all"
             />
@@ -73,7 +73,7 @@ const Header = () => {
           animate={{ scale: 1 }}
         >
           <img
-            src="src/assets/search.svg"
+            src="images/search.svg"
             alt="search logo"
             className="w-7 absolute left-3"
           />
