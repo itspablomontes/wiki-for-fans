@@ -3,7 +3,7 @@ import CharacterDescription from "../components/CharacterDescription";
 import api from "../services/api";
 import { useState, useEffect } from "react";
 import { Character } from "../types/CharacterType";
-import { ApiResponseType } from "../types/ApiResponseType";
+import { ApiCharacterResponseType } from "../types/ApiResponseType";
 import { useParams } from "react-router-dom";
 
 const CharacterPage = () => {
@@ -15,7 +15,7 @@ const CharacterPage = () => {
   const getCharacter = async () => {
     if (!id) return;
     try {
-      const response = await api.get<ApiResponseType>(
+      const response = await api.get<ApiCharacterResponseType>(
         `/characters/find-character/${id}`
       );
       setCharacter(response.data.data);
