@@ -18,8 +18,7 @@ const HomeCards: React.FC<homeCardsProps> = ({ cardsRef }) => {
       </motion.div>
       <div className="flex justify-center flex-col items-center gap-9 flex-wrap md:flex-row">
         <Link to={"/characters-list"}>
-          <motion.a
-            href=""
+          <motion.div
             className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -31,9 +30,9 @@ const HomeCards: React.FC<homeCardsProps> = ({ cardsRef }) => {
             </motion.h1>
             <motion.img
               className=" rounded-md  bg-center bg-cover"
-              src="src/assets/Jon_Snow.webp"
+              src="images/jon-card.webp"
             />
-          </motion.a>
+          </motion.div>
         </Link>
 
         <Link to={"/houses-list"}>
@@ -50,7 +49,7 @@ const HomeCards: React.FC<homeCardsProps> = ({ cardsRef }) => {
             </motion.h1>
             <motion.img
               className=" rounded-md  bg-center bg-cover"
-              src="src/assets/lannister.webp"
+              src="images/lannister.webp"
             />
           </motion.a>
         </Link>
