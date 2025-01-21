@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-const HousesListItem = () => {
+interface HousesListItemProps {
+  id?: number;
+  name: string;
+  house_banner_url: string;
+}
+
+const HousesListItem = ({
+  id,
+  name,
+  house_banner_url,
+}: HousesListItemProps) => {
   return (
     <Link
-      to="/house"
+      to={`/house/${id}`}
       className="flex flex-col justify-center items-center gap-3 "
     >
       <motion.div
@@ -13,8 +23,8 @@ const HousesListItem = () => {
         animate={{ scale: 1 }}
       >
         <img
-          src="src/assets/house-lannister.webp"
-          alt="house lannister banner"
+          src={house_banner_url}
+          alt={`${name} banner`}
           className="max-w-64 rounded-full"
         />
       </motion.div>
@@ -24,7 +34,7 @@ const HousesListItem = () => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
       >
-        Lannister
+        {name}
       </motion.div>
     </Link>
   );

@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-const CharacterListItem = () => {
+
+interface CharacterListItemProps {
+  id?: number;
+  name: string;
+  profile_image_url: string;
+}
+
+const CharacterListItem = ({
+  id,
+  name,
+  profile_image_url,
+}: CharacterListItemProps) => {
+  console.log(profile_image_url);
   return (
     <Link
-      to="/character"
+      to={`/character/${id}`}
       className="flex flex-col justify-center items-center gap-3 "
     >
       <motion.div
@@ -12,18 +24,18 @@ const CharacterListItem = () => {
         animate={{ scale: 1 }}
       >
         <img
-          src="src/assets/jon-small-icon.webp"
-          alt="jon snow"
+          src={profile_image_url}
+          alt={`${name} picture`}
           className="max-w-64 rounded-full"
         />
       </motion.div>
 
       <motion.div
-        className="font-custom text-2xl "
+        className="font-custom text-2xl text-center"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
       >
-        Jon Snow
+        {name}
       </motion.div>
     </Link>
   );

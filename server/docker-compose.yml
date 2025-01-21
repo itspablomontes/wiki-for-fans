@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: wiki-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DB}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: backend-app
+    environment:
+      DATABASE_URL: "postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DB}?schema=public"
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - db
+    command: "npm start"
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
