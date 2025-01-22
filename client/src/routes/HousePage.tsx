@@ -15,9 +15,7 @@ const HousePage = () => {
   const getHouse = async () => {
     if (!id) return;
     try {
-      const response = await api.get<ApiHouseResponseType>(
-        `houses/find-house/${id}`
-      );
+      const response = await api.get<ApiHouseResponseType>(`houses/find/${id}`);
       setHouse(response.data.data);
     } catch (error) {
       console.error("Error fetching house", error);

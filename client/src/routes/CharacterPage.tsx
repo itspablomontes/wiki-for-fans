@@ -16,7 +16,7 @@ const CharacterPage = () => {
     if (!id) return;
     try {
       const response = await api.get<ApiCharacterResponseType>(
-        `/characters/find-character/${id}`
+        `/characters/find/${id}`
       );
       setCharacter(response.data.data);
     } catch (error) {
