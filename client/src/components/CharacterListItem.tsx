@@ -12,7 +12,6 @@ const CharacterListItem = ({
   name,
   profile_image_url,
 }: CharacterListItemProps) => {
-  console.log(profile_image_url);
   return (
     <Link
       to={`/character/${id}`}
