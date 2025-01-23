@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-interface CharacterListItemProps {
+interface SearchListItemProps {
   id?: number;
   name: string;
-  profile_image_url: string;
+  image_result: string;
+  result_endpoint: string;
 }
 
-const CharacterListItem = ({
+export const SearchListItem = ({
   id,
   name,
-  profile_image_url,
-}: CharacterListItemProps) => {
+  image_result,
+  result_endpoint,
+}: SearchListItemProps) => {
   return (
     <Link
-      to={`/character/${id}`}
+      to={`/${result_endpoint}/${id}`}
       className="flex flex-col justify-center items-center gap-3 "
     >
       <motion.div
@@ -23,7 +25,7 @@ const CharacterListItem = ({
         animate={{ scale: 1 }}
       >
         <img
-          src={profile_image_url}
+          src={image_result}
           alt={`${name} picture`}
           className="max-w-64 rounded-full"
         />
@@ -39,5 +41,3 @@ const CharacterListItem = ({
     </Link>
   );
 };
-
-export default CharacterListItem;

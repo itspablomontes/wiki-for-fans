@@ -10,7 +10,7 @@ import {
 export const charactersRoutes = Router();
 
 charactersRoutes.get("/", getCharacters);
-charactersRoutes.get("/find-character/:id", findCharacterById);
-charactersRoutes.post("/add-character", addCharacter);
-charactersRoutes.delete("/remove-character", removeCharacterById);
-charactersRoutes.put("/update-character/:id", updateCharacterById);
+charactersRoutes.get("/find/:id", findCharacterById);
+charactersRoutes.post("/add", addCharacter);
+charactersRoutes.delete("/remove", removeCharacterById);
+charactersRoutes.put("/update/:id", updateCharacterById);
