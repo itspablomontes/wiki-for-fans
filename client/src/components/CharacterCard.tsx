@@ -60,7 +60,7 @@ const CharacterCard = ({
           ))}
         </ul>
       </div>
-      <div>{phrase}</div>
+      <div>{`"${phrase}"`}</div>
     </motion.div>
   );
 };

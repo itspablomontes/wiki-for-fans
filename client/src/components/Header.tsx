@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const menuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,9 +18,18 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      navigate(`/search?query=${encodeURIComponent(query)}`);
+      setQuery("");
+    }
+  };
+
   return (
     <>
       <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-black drop-shadow-md sticky top-0 z-50">
+        {/*  Nav Bar  */}
         <motion.div
           whileTap={{ scale: 0.9 }}
           initial={{ scale: 0 }}
@@ -66,7 +77,10 @@ const Header = () => {
             </motion.li>
           </Link>
         </motion.ul>
+
+        {/*  Search Bar  */}
         <motion.form
+          onSubmit={handleSearch}
           className="hidden relative md:flex items-center justify-center gap-3 "
           whileHover={{ scale: 1.05 }}
           initial={{ scale: 0 }}
@@ -81,10 +95,13 @@ const Header = () => {
             type="search"
             name="search"
             id="search"
+            value={query}
             placeholder="Search..."
             className="py-2 pl-10 border-2 border-gray-900 bg-black text-white rounded-2xl"
+            onChange={(e) => setQuery(e.target.value)}
           />
         </motion.form>
+
         <motion.div className="flex flex-row items-center gap-4 xl:hidden">
           <motion.i
             className="bx bx-search text-2xl md:hidden font-bold"
@@ -104,6 +121,8 @@ const Header = () => {
           />
         </motion.div>
       </header>
+
+      {/*  Mobile Nav Bar  */}
       <motion.div
         className={`sticky z-50 top-24 xl:hidden h-screen left-0 w-full bg-zinc-900 flex flex-col items-center gap-6 font-semibold text-lg ${
           isMenuOpen ? "opacity-100" : "hidden"
@@ -135,7 +154,9 @@ const Header = () => {
         </Link>
       </motion.div>
 
+      {/*  Mobile Search Bar  */}
       <motion.form
+        onSubmit={handleSearch}
         className={`sticky z-50 xl:hidden top-24 left-0 flex justify-center w-full ${
           isSearchOpen ? "opacity-100" : "hidden"
         }`}
@@ -147,8 +168,10 @@ const Header = () => {
           type="search"
           name="search"
           id="search"
+          value={query}
           placeholder="Search..."
           className="py-2 px-2 border-2 border-gray-900 bg-black text-white rounded-2xl w-4/5"
+          onChange={(e) => setQuery(e.target.value)}
         />
       </motion.form>
     </>

@@ -5,6 +5,7 @@ import CharacterPage from "./routes/CharacterPage";
 import CharactersList from "./routes/CharactersList";
 import HousesList from "./routes/HousesList";
 import HousePage from "./routes/HousePage";
+import SearchPage from "./routes/SearchPage";
 
 export function Router() {
   return (
@@ -15,6 +16,7 @@ export function Router() {
         <Route path="/characters-list" element={<CharactersList />} />
         <Route path="/house/:id" element={<HousePage />} />
         <Route path="/houses-list" element={<HousesList />} />
+        <Route path="/search" element={<SearchPage />} />
       </Route>
     </Routes>
   );

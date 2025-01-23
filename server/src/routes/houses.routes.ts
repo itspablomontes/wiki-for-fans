@@ -10,7 +10,7 @@ import {
 export const housesRoutes = Router();
 
 housesRoutes.get("/", getHouses);
-housesRoutes.get("/find-house/:id", findHouseById);
-housesRoutes.post("/add-house", addHouse);
-housesRoutes.delete("/remove-house/:id", removeHouse);
-housesRoutes.put("/update-house/:id", updateHouse);
+housesRoutes.get("/find/:id", findHouseById);
+housesRoutes.post("/add", addHouse);
+housesRoutes.delete("/remove/:id", removeHouse);
+housesRoutes.put("/update/:id", updateHouse);
