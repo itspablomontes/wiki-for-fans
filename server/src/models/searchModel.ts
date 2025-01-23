@@ -17,10 +17,17 @@ export const searchAll = async (query: string) => {
       [`%${query}%`]
     );
 
-    return {
-      characters: charactersResult.rows,
-      houses: housesResult.rows,
-    };
+    const characters = charactersResult.rows.map((character) => ({
+      ...character,
+      type: "character",
+    }));
+
+    const houses = housesResult.rows.map((house) => ({
+      ...house,
+      type: "house",
+    }));
+
+    return [...characters, ...houses];
   } catch (error) {
     console.error("Database error: ", error);
     throw error;
