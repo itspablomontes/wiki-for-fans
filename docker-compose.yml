@@ -34,16 +34,5 @@ services:
         condition: service_healthy
     volumes:
       - ./server:/app
-
-  frontend:
-    build:
-      context: .
-      dockerfile: client/Dockerfile
-    container_name: frontend-app
-    ports:
-      - "8080:80"
-    depends_on:
-      - backend
-
 volumes:
   postgres_data:
