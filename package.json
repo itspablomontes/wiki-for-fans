@@ -2,12 +2,14 @@
   "name": "wiki-for-fans",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\""
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\"",
+    "start": "docker compose up -d && cd client && npm run dev"
   },
   "dependencies": {
     "concurrently": "^7.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.10.10",
     "vite": "^4.0.0"
   }
 }
