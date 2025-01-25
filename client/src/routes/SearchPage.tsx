@@ -38,21 +38,22 @@ const SearchPage = () => {
         SEARCH RESULTS
       </motion.div>
       <div className="grid md:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-6 wrap">
-        {searchResults.map((result) => (
-          <SearchListItem
-            key={result.id}
-            id={result.id}
-            name={result.name}
-            image_result={
-              result.type === "character"
-                ? result.profile_image_url
-                : result.house_banner_url
-            }
-            result_endpoint={
-              result.type === "character" ? "character" : "house"
-            }
-          />
-        ))}
+        {Array.isArray(searchResults) &&
+          searchResults?.map((result) => (
+            <SearchListItem
+              key={result.id}
+              id={result.id}
+              name={result.name}
+              image_result={
+                result.type === "character"
+                  ? result.profile_image_url
+                  : result.house_banner_url
+              }
+              result_endpoint={
+                result.type === "character" ? "character" : "house"
+              }
+            />
+          ))}
       </div>
     </div>
   );

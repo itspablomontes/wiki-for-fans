@@ -29,14 +29,15 @@ const HousesList = () => {
         HOUSES
       </motion.div>
       <div className="grid md:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-6 wrap">
-        {houses.map((house) => (
-          <HousesListItem
-            key={house.id}
-            id={house.id}
-            name={house.name}
-            house_banner_url={house.house_banner_url}
-          />
-        ))}
+        {Array.isArray(houses) &&
+          houses?.map((house) => (
+            <HousesListItem
+              key={house.id}
+              id={house.id}
+              name={house.name}
+              house_banner_url={house.house_banner_url}
+            />
+          ))}
       </div>
     </div>
   );

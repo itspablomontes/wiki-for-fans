@@ -17,7 +17,7 @@ const CharactersList = () => {
   };
   useEffect(() => {
     getCharacters();
-  }, []);
+  }, [characters]);
 
   return (
     <div className="flex flex-col justify-center items-center py-8 px-6 gap-9">
@@ -29,14 +29,15 @@ const CharactersList = () => {
         CHARACTERS
       </motion.div>
       <div className="grid md:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-6 wrap">
-        {characters.map((character) => (
-          <CharacterListItem
-            key={character.id}
-            id={character.id}
-            name={character.name}
-            profile_image_url={character.profile_image_url}
-          />
-        ))}
+        {Array.isArray(characters) &&
+          characters?.map((character) => (
+            <CharacterListItem
+              key={character.id}
+              id={character.id}
+              name={character.name}
+              profile_image_url={character.profile_image_url}
+            />
+          ))}
       </div>
     </div>
   );
