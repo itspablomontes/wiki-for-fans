@@ -36,8 +36,7 @@ const HomeCards: React.FC<homeCardsProps> = ({ cardsRef }) => {
         </Link>
 
         <Link to={"/houses-list"}>
-          <motion.a
-            href=""
+          <motion.div
             className="flex flex-col items-center gap-3 cursor-pointer max-w-xs "
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -51,7 +50,7 @@ const HomeCards: React.FC<homeCardsProps> = ({ cardsRef }) => {
               className=" rounded-md  bg-center bg-cover"
               src="images/lannister.webp"
             />
-          </motion.a>
+          </motion.div>
         </Link>
       </div>
     </div>
