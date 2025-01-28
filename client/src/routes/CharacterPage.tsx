@@ -1,5 +1,6 @@
 import CharacterCard from "../components/CharacterCard";
 import CharacterDescription from "../components/CharacterDescription";
+import SkeletonPage from "../components/SkeletonPage";
 import api from "../services/api";
 import { useState, useEffect } from "react";
 import { Character } from "../types/CharacterType";
@@ -10,7 +11,6 @@ const CharacterPage = () => {
   const { id } = useParams<{ id: string }>();
   const [character, setCharacter] = useState<Character>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const getCharacter = async () => {
     if (!id) return;
@@ -21,7 +21,6 @@ const CharacterPage = () => {
       setCharacter(response.data.data);
     } catch (error) {
       console.error("Error fetching character", error);
-      setError("Failed to load character data");
     } finally {
       setLoading(false);
     }
@@ -29,9 +28,9 @@ const CharacterPage = () => {
   useEffect(() => {
     getCharacter();
   });
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!character) return <div>Character Not Found</div>;
+
+  if (loading) return <SkeletonPage />;
+  if (!character) return <div>Character not found</div>;
 
   return (
     <div className="py-4 px-6 grid gap-12 justify-center md:grid-cols-[2fr_3fr]">
