@@ -6,7 +6,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollToCards }) => {
   return (
-    <div className=" px-8 w-auto py-96 md:py-[25rem] flex flex-col gap-5 justify-center bg-hero-background bg-center font-bold text-center bg-cover md:bg-[center_top]">
+    <div className=" px-8 w-auto h-screen pt-52 md:py-[25rem] flex flex-col justify-start gap-5 items-center bg-hero-background bg-center font-bold text-center bg-cover md:bg-[center_top]">
       <motion.div
         className="md:text-4xl font-custom text-xl"
         initial={{ scale: 0 }}

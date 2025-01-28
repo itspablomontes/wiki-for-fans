@@ -5,12 +5,12 @@ import api from "../services/api";
 import { ApiHouseResponseType } from "../types/ApiResponseType";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SkeletonPage from "../components/SkeletonPage";
 
 const HousePage = () => {
   const { id } = useParams<{ id: string }>();
   const [house, setHouse] = useState<House>();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const getHouse = async () => {
     if (!id) return;
@@ -19,20 +19,18 @@ const HousePage = () => {
       setHouse(response.data.data);
     } catch (error) {
       console.error("Error fetching house", error);
-      setError("Failed to load house data");
     } finally {
       setLoading(false);
     }
   };
   useEffect(() => {
     getHouse();
-  }, [id]);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!house) return <div>House Not Found</div>;
+  });
 
+  if (loading) return <SkeletonPage />;
+  if (!house) return <div>House not found</div>;
   return (
-    <div className="py-8 px-6 grid gap-12 justify-center md:grid-cols-[2fr_3fr]">
+    <div className="py-4 px-6 grid gap-12 justify-center md:grid-cols-[2fr_3fr]">
       <HouseCard
         name={house.name}
         coat_of_arms={house.coat_of_arms}

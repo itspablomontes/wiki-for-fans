@@ -35,31 +35,52 @@ function HouseCard({
         alt={coat_of_arms}
         className="rounded-lg self-center  max-h-[400px] md:max-h-[500px] border-2 border-white"
       />
-      <div>
-        <b>Coat of Arms: </b>
-        {coat_of_arms}
-      </div>
-      <div>
-        <b>Words: </b>
-        {`"${words}"`}
-      </div>
-      <div>
-        <b>Seat: </b> {seat}
-      </div>
-      <div>
-        <b>Region: </b> {region}
-      </div>
-      <div>
-        <b>Head: </b> {head}
-      </div>
-      <div>
-        <b>Notable Characters: </b>
-        <ul>
-          {notable_characters.map((character, index) => (
-            <li key={index}>{character}</li>
-          ))}
-        </ul>
-      </div>
+      <table className="w-full border border-gray-300">
+        <tbody>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Coat of Arms:
+            </td>
+            <td className="px-2 py-1">{coat_of_arms}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Words:
+            </td>
+            <td className="px-2 py-1">{`"${words}"`}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Seat:
+            </td>
+            <td className="px-2 py-1">{seat}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Region:
+            </td>
+            <td className="px-2 py-1">{region}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Head:
+            </td>
+            <td className="px-2 py-1">{head}</td>
+          </tr>
+          <tr>
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Notable Characters:
+            </td>
+            <td className="px-2 py-1">
+              <ul className="">
+                {notable_characters.map((character, index) => (
+                  <li key={index}>{`- ${character}`}</li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </motion.div>
   );
 }
