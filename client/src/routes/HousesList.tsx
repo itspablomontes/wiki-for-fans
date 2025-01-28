@@ -3,9 +3,11 @@ import HousesListItem from "../components/HousesListItem";
 import api from "../services/api";
 import { useState, useEffect } from "react";
 import { House } from "../types/HouseType";
+import SkeletonList from "../components/SkeletonList";
 
 const HousesList = () => {
   const [houses, setHouses] = useState<House[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getHouses = async () => {
     try {
@@ -13,6 +15,8 @@ const HousesList = () => {
       setHouses(response.data);
     } catch (error) {
       console.error("Error fetching houses", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -29,15 +33,19 @@ const HousesList = () => {
         HOUSES
       </motion.div>
       <div className="grid md:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-6 wrap">
-        {Array.isArray(houses) &&
-          houses?.map((house) => (
-            <HousesListItem
-              key={house.id}
-              id={house.id}
-              name={house.name}
-              house_banner_url={house.house_banner_url}
-            />
-          ))}
+        {loading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <SkeletonList key={index} />
+            ))
+          : Array.isArray(houses) &&
+            houses?.map((house) => (
+              <HousesListItem
+                key={house.id}
+                id={house.id}
+                name={house.name}
+                house_banner_url={house.house_banner_url}
+              />
+            ))}
       </div>
     </div>
   );

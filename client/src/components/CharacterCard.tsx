@@ -35,32 +35,58 @@ const CharacterCard = ({
         alt={`${name} picture`}
         className="rounded-lg self-center  max-h-[400px] md:max-h-[500px] border-2 border-white"
       />
-      <div>
-        <b>Born:</b> {born}
-      </div>
-      <div>
-        <b>Died:</b> {died}
-      </div>
-      <div>
-        <b>House:</b> {house}
-      </div>
-      <div>
-        <b>Titles:</b>
-        <ul>
-          {titles.map((title, index) => (
-            <li key={index}>{title}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <b>Affiliations:</b>
-        <ul>
-          {affiliations.map((affiliation, index) => (
-            <li key={index}>{affiliation}</li>
-          ))}
-        </ul>
-      </div>
-      <div>{`"${phrase}"`}</div>
+      <table className="w-full border border-gray-300">
+        <tbody>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Born:
+            </td>
+            <td className="px-2 py-1">{born}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Died:
+            </td>
+            <td className="px-2 py-1">{died}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              House:
+            </td>
+            <td className="px-2 py-1">{house}</td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Titles:
+            </td>
+            <td className="px-2 py-1">
+              <ul>
+                {titles.map((title, index) => (
+                  <li key={index}>{`- ${title}`}</li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+          <tr className="border-b border-gray-300">
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Affiliations:
+            </td>
+            <td className="px-2 py-1">
+              <ul>
+                {affiliations.map((affiliation, index) => (
+                  <li key={index}>{`- ${affiliation}`}</li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td className="font-bold border-r border-gray-300 px-2 py-1">
+              Phrase:
+            </td>
+            <td className="px-2 py-1">{`"${phrase}"`}</td>
+          </tr>
+        </tbody>
+      </table>
     </motion.div>
   );
 };
