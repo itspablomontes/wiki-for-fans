@@ -28,13 +28,13 @@ const CharacterPage = () => {
   };
   useEffect(() => {
     getCharacter();
-  }, [id]);
+  });
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!character) return <div>Character Not Found</div>;
 
   return (
-    <div className="py-8 px-6 grid gap-12 justify-center md:grid-cols-[2fr_3fr]">
+    <div className="py-4 px-6 grid gap-12 justify-center md:grid-cols-[2fr_3fr]">
       <CharacterCard
         name={character.name}
         born={character.born}
