@@ -1,6 +1,5 @@
 # Wiki For Fans
 
-<img src="imagem.png" alt="Exemplo imagem">
 
 > This is a a Full-Stack application with the goal of enabling fans to know more about the lore of a specific fictional universe, in this case the **World Of Ice And Fire** from **Game Of Thrones**.
 
