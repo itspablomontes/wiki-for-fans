@@ -1,6 +1,5 @@
 # Wiki For Fans
 
-
 > This is a a Full-Stack application with the goal of enabling fans to know more about the lore of a specific fictional universe, in this case the **World Of Ice And Fire** from **Game Of Thrones**.
 
 ### Project Roadmap
@@ -78,6 +77,12 @@ DB_PORT=5432
 PORT=3000
 
 VITE_API_BASE_URL=http://localhost:3000
+```
+
+Then, populate the database running this in the terminal:
+
+```
+./populate-db.sh
 ```
 
 Afterwards, execute this command to run the project locally:
